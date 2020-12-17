@@ -12,7 +12,8 @@ class PostPage extends Component {
     post: {},
     redirect: false,
     comments: [],
-    user: []
+    user: [],
+    refresh: false,
   }
 
   handleDelete = (postID) => {
@@ -21,6 +22,15 @@ class PostPage extends Component {
     };
     fetch(`http://127.0.0.1:8000/api/posts/${postID}`, requestOption).then((response) => {this.setState({redirect: true})})
   };
+
+  handlePostDelete = (postID, commentID) => {
+    const requestOption = {
+      method: 'DELETE'
+    };
+    fetch(`http://127.0.0.1:8000/api/posts/${postID}/comments/${commentID}`, requestOption).then((response) => {
+      window.location.reload()
+    })
+  }
 
   componentDidMount() {
 
@@ -53,15 +63,17 @@ class PostPage extends Component {
   
   render() {
     
-    // console.log(this.state.user)
+    // CONSOLE LOG HERE!!!!!!!!!!!
+    console.log(this.state.comments[5])
+    console.log(this.state.user.username)
 
-    const { redirect } = this.state
+    const { redirect, refresh } = this.state
     if (redirect) {
       return <Redirect to='/'/>
     }
     
     const {title, post_content, image, date_posted, user} = this.state.post
-    
+
     return (
       <div>
         <h2>{title}</h2>
@@ -71,16 +83,31 @@ class PostPage extends Component {
         <div>
          {/* loops thru comments */}
             {this.state.comments.map((value, index) => {
-              // need to figure out how to get username attached to comment
-              return <p key={index}><i>{value.user}</i>: "{value.comment_content}"</p>
+              
+              return <p 
+                      key={index}>
+                      <i>{value.user}</i>:
+                      "{value.comment_content}"
+                      {/* REGISTERS DELETE BUTTON FOR USER WHO POSTED THE COMMENT */}
+                      {
+                        this.state.user.username === value.user
+                        &&
+                      <button onClick={() => {this.handlePostDelete(value.post, value.id)}}>Delete</button>
+                      }
+                      </p>
+
             })}
         </div>
         <CreateComment username={this.state.user.username} postID={this.props.match.params.postID}/>
         <br/>
         <br/>
+        {
+          this.state.user.id === this.state.post.user
+          &&
         <div>
           <button onClick={() => {this.handleDelete(this.state.post.id)}}>Delete</button>
         </div>
+        }
       </div>
     )
   }

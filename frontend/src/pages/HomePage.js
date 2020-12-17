@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import UserAPI from '../api/UserAPI.js';
 import PostList from '../components/PostList/PostList'
 
@@ -19,33 +19,27 @@ class HomePage extends Component {
   
   render() {
 
-    console.log(this.props.user)
+    // console.log(this.props.user)
 
     return (
       <div>
-        Home Page
+        <br></br>
         {
           this.props.user 
-          &&
-          <div>
-            Hi {this.props.user.first_name}
-            <PostList posts={this.state.posts}/>
-            <Link to='/new_post'>New Post</Link>
-          </div>
-        }
-        {
-          !this.props.isLoggedIn 
           ?
           <div>
-            <div>
-              <Link to='/login'>Login</Link>
-            </div>
-            <div>
-              <Link to='/signup'>Signup</Link>
-            </div>
+            <h3>Welcome {this.props.user.first_name}</h3>
+            <br></br>
+            <Link to='/new_post'>Create Post</Link>
+            <br></br>
+            <br></br>
+            <PostList posts={this.state.posts}/>
           </div>
           :
-          <button onClick={this.props.handleLogout}>Logout</button>
+          <div>
+          Sign Up For Free And Trade Clothes With Our Users!
+          </div>
+            
         }
       </div>
     );

@@ -19,12 +19,6 @@ const LoginPage = (props) => {
         <input type='password' placeholder='password' name='password'></input>
         <button type='submit'>Submit</button>
       </form>
-      <div>
-        <Link to='/'>Home</Link>
-      </div>
-      <div>
-        <Link to='/signup'>Signup</Link>
-      </div>
     </div>
   )
 }

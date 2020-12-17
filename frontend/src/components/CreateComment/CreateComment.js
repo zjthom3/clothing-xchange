@@ -19,7 +19,7 @@ class CreateComment extends Component {
 
   render() {
 
-    console.log(this.props.username)
+    // console.log(this.props.username)
 
     return(
       <div>
@@ -27,7 +27,6 @@ class CreateComment extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>Comment: </label>
           <input type='textarea' placeholder='' name='comment_content'></input>
-        
           <button type='submit'>Submit</button>
         </form>
       </div>

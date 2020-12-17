@@ -7,6 +7,8 @@ import SignupPage from './pages/SignupPage'
 import UserAPI from './api/UserAPI';
 import CreatePostPage from './pages/CreatePostPage';
 import PostPage from './pages/PostPage';
+import AppNav from './components/Navbar/Navbar';
+import 'bootstrap/dist/css/bootstrap.css';
 
 
 function App() {
@@ -28,7 +30,6 @@ function App() {
       }
     }
   }
-  // console.log(user)
 
   const handleLogin = async (evt) => {
     evt.preventDefault()
@@ -66,6 +67,7 @@ function App() {
   }
 
   const renderHomePage = () => {
+    console.log(isLoggedIn)
     return (
       <HomePage
       handleLogout={handleLogout}
@@ -86,6 +88,7 @@ function App() {
   return (
     <div className='App'>
       <BrowserRouter>
+        <AppNav/>
         <Route exact path='/' render={renderHomePage}/>
         <Route exact path='/login' render={renderLoginPage}/>
         <Route exact path='/signup' component={SignupPage}/>

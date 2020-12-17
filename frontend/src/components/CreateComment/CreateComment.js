@@ -23,7 +23,7 @@ class CreateComment extends Component {
 
     return(
       <div>
-        <h1>Comment On Post</h1>
+        <h3>Comment On Post</h3>
         <form onSubmit={this.handleSubmit}>
           <label>Comment: </label>
           <input type='textarea' placeholder='' name='comment_content'></input>

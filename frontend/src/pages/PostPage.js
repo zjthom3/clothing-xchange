@@ -1,10 +1,13 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import UserAPI from '../api/UserAPI.js'
-import { Form, Button } from 'react-bootstrap'
 import { Redirect } from 'react-router'
-import CommentList from '../components/CommentList/CommentList'
-import { ListGroup, ListGroupItem } from 'reactstrap'
 import CreateComment from '../components/CreateComment/CreateComment.js'
+import moment from 'moment'
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
+
+
 
 
 class PostPage extends Component {
@@ -67,19 +70,20 @@ class PostPage extends Component {
     console.log(this.state.comments[5])
     console.log(this.state.user.username)
 
-    const { redirect, refresh } = this.state
+    const { redirect } = this.state
     if (redirect) {
       return <Redirect to='/'/>
     }
     
-    const {title, post_content, image, date_posted, user} = this.state.post
+    const { title, post_content, image, date_posted } = this.state.post
 
     return (
       <div>
-        <h2>{title}</h2>
-        <h2>{post_content}</h2>
-        <h2>{image}</h2>
-        <h2>{date_posted}</h2>
+        <h3>{title}</h3>
+        <h3>{post_content}</h3>
+        <h3>{image}</h3>
+        <p><i>Posted on {moment(date_posted).format('MMMM Do YYYY')}</i></p>
+        <hr/>
         <div>
          {/* loops thru comments */}
             {this.state.comments.map((value, index) => {
@@ -92,7 +96,7 @@ class PostPage extends Component {
                       {
                         this.state.user.username === value.user
                         &&
-                      <button onClick={() => {this.handlePostDelete(value.post, value.id)}}>Delete</button>
+                      <IconButton aria-label="delete" onClick={() => {this.handlePostDelete(value.post, value.id)}}><DeleteIcon fontSize='small'/></IconButton>
                       }
                       </p>
 
@@ -101,11 +105,14 @@ class PostPage extends Component {
         <CreateComment username={this.state.user.username} postID={this.props.match.params.postID}/>
         <br/>
         <br/>
+        {/* DELETE BUTTON FOR POST */}
         {
           this.state.user.id === this.state.post.user
           &&
         <div>
-          <button onClick={() => {this.handleDelete(this.state.post.id)}}>Delete</button>
+          <Button variant="contained"
+                  color="secondary"
+                  startIcon={<DeleteIcon />} onClick={() => {this.handleDelete(this.state.post.id)}}>Delete Post</Button>
         </div>
         }
       </div>

@@ -1,0 +1,16 @@
+2020-12-16 09:00:37.822 EST [5022] LOG:  starting PostgreSQL 13.1 on x86_64-apple-darwin19.6.0, compiled by Apple clang version 12.0.0 (clang-1200.0.32.27), 64-bit
+2020-12-16 09:00:37.825 EST [5022] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2020-12-16 09:00:37.825 EST [5022] LOG:  listening on IPv6 address "::1", port 5432
+2020-12-16 09:00:37.826 EST [5022] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2020-12-16 09:00:37.833 EST [5023] LOG:  database system was shut down at 2020-12-16 09:00:37 EST
+2020-12-16 09:00:37.841 EST [5022] LOG:  database system is ready to accept connections
+2020-12-16 09:00:45.103 EST [5045] FATAL:  database "pp" does not exist
+2020-12-16 09:01:36.259 EST [5060] FATAL:  database "aries" does not exist
+2020-12-16 09:01:39.658 EST [5061] FATAL:  database "aries" does not exist
+2020-12-16 09:02:12.244 EST [5065] FATAL:  database "pp" does not exist
+2020-12-16 09:04:16.027 EST [5234] FATAL:  database "aries" does not exist
+2020-12-16 09:04:39.160 EST [5239] FATAL:  database "pp" does not exist
+2020-12-16 09:04:41.099 EST [5240] FATAL:  database "pp" does not exist
+2020-12-16 09:05:50.973 EST [5249] FATAL:  database "aries" does not exist
+2020-12-16 09:31:52.694 EST [5615] FATAL:  database "pp" does not exist
+2020-12-16 09:38:16.043 EST [5770] FATAL:  database "pp" does not exist

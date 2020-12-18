@@ -9,6 +9,7 @@ import CreatePostPage from './pages/CreatePostPage';
 import PostPage from './pages/PostPage';
 import AppNav from './components/Navbar/Navbar';
 import 'bootstrap/dist/css/bootstrap.css';
+import AddressPage from './pages/AddressPage';
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
       setIsLoggedIn(true)
       setUser(data.user)
     }
+  
   }
 
   const handleLogout = async (evt) => {
@@ -85,6 +87,14 @@ function App() {
     )
   }
 
+  const renderAddressPage = () => {
+    return (
+      <AddressPage
+      user={user}
+      />
+    )
+  }
+
   return (
     <div className='App'>
       <BrowserRouter>
@@ -94,6 +104,7 @@ function App() {
         <Route exact path='/signup' component={SignupPage}/>
         <Route exact path='/new_post' render={renderCreatePostPage}/>
         <Route exact path='/post/:postID' component={PostPage}/>
+        <Route exact path='/user_address' render={renderAddressPage}/>
       </BrowserRouter>
     </div>
   );

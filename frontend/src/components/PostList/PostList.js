@@ -16,16 +16,18 @@ function PostList(props) {
       id[i] = props.posts[i].id
     }
     counter += 1
-    return (<div><Link to={`/post/${id[counter]}`}>{cell}</Link></div>);
+    // PUT IN ADDRESS
+    return (<div><Link to={`/post/${id[counter]}`}>{cell}</Link> (address goes here)</div>);
   }
   
   const dateFormat = (value, row, index) => {
     return moment(value).startOf('day').fromNow()
   }
+  // console.log(props.posts)
 
   return (
     <div>
-      <BootstrapTable data={props.posts} bordered={false}>
+      <BootstrapTable data={ props.posts } bordered={false}>
        <TableHeaderColumn width='200' isKey dataFormat={CellFormatter} dataField='title' filter={ { type: 'TextFilter', delay: 500 } } >Title</TableHeaderColumn>
         <TableHeaderColumn width='300' dataField='post_content' > Content </TableHeaderColumn>
         <TableHeaderColumn width='100' dataAlign='start' dataSort dataField='date_posted' dataFormat={dateFormat}> Posted </TableHeaderColumn>

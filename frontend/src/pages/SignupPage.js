@@ -6,19 +6,18 @@ const SignupPage = () => {
 
   const [redirect, setRedicrect] = useState(false)
 
+
   const handleSignup = async (evt) => {
+  
     evt.preventDefault()
     let userCredentials = {
       username: evt.target.username.value,
       password: evt.target.password.value,
       first_name: evt.target.first_name.value,
       last_name: evt.target.last_name.value,
-      street_name: evt.target.street_name.value,
-      city: evt.target.city.value,
-      state_prov: evt.target.state_prov.value,
-      zip: evt.target.zip.value
+      email: evt.target.email.value
     }
-    console.log(userCredentials.first_name)
+    // console.log()
     let response = await UserAPI.signupUser(userCredentials)
     let data = await response.json()
     if (data.token) {
@@ -28,7 +27,6 @@ const SignupPage = () => {
   if (redirect) {
     return <Redirect to='/login'/>
   }
-
 
   return (
     <div>
@@ -43,14 +41,9 @@ const SignupPage = () => {
           <input type='text' placeholder='' name='first_name'></input>
           <label>Last Name:</label>
           <input type='text' placeholder='' name='last_name'></input>
-          <label>Street:</label>
-          <input type='text' placeholder='' name='street_name'></input>
-          <label>City:</label>
-          <input type='text' placeholder='' name='city'></input>
-          <label>State/Province:</label>
-          <input type='text' placeholder='' name='state_prov'></input>
-          <label>Zip Code:</label>
-          <input type='text' placeholder='' name='zip'></input>
+          <label>Email: </label>
+          <input type='email' placeholder='john@doe.com' name='email'></input>
+      
           <button type='submit'>Sign Up</button>
         </form>
       </div>

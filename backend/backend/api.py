@@ -1,11 +1,9 @@
 from rest_framework.routers import DefaultRouter
 from rest_framework_extensions.routers import NestedRouterMixin
-from core.views import CommentViewSet, PostViewSet, UserList
+from core.views import CommentViewSet, PostViewSet, UserList, UserAddressViewSet
 
 router = DefaultRouter()
 
-# router.register('user', UserList, basename='user')
-# router.register('user_data', UserDataViewSet)
 router.register('posts', PostViewSet)
 router.register('comments', CommentViewSet)
 
@@ -22,4 +20,4 @@ posts_router.register(
         parents_query_lookups=['post_id', 'post']
     )
 
-
+router.register('user_address', UserAddressViewSet)

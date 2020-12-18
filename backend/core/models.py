@@ -21,4 +21,10 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment_content
-    
+
+class UserAddress(models.Model):
+    street = models.TextField(max_length=200)
+    city = models.TextField(max_length=200)
+    state_prov = models.TextField(max_length=200)
+    zipcode = models.TextField(max_length=200)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='useraddresses')

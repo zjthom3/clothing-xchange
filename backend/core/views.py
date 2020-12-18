@@ -7,8 +7,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework_extensions.mixins import NestedViewSetMixin
-from .serializers import UserSerializer, UserSerializerWithToken, CommentSerializer, PostSerializer
-from .models import Comment, Post
+from .serializers import UserSerializer, UserSerializerWithToken, CommentSerializer, PostSerializer, UserAddressSerializer
+from .models import Comment, Post, UserAddress
 
 @api_view(['GET'])
 def current_user(request):
@@ -54,3 +54,10 @@ class CommentViewSet(NestedViewSetMixin, ModelViewSet):
 
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
+
+class UserAddressViewSet(NestedViewSetMixin, ModelViewSet):
+
+    permission_classes = (permissions.AllowAny,)
+
+    serializer_class = UserAddressSerializer
+    queryset = UserAddress.objects.all()

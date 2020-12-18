@@ -1,12 +1,13 @@
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from django.contrib.auth.models import User
-from .models import Post, Comment
+from .models import Post, Comment, UserAddress
 
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
+        # fields = ['id', 'first_name', 'last_name', 'username', 'street_name']
         fields = '__all__'
    
 class UserSerializerWithToken(serializers.ModelSerializer):
@@ -47,8 +48,7 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comment
         fields = '__all__'
 
-# class UserDataSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = UserData
-#         # fields = ['id', 'first_name', 'last_name', 'street_name', 'city', 'state_prov', 'zip']
-#         fields = '__all__'
+class UserAddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserAddress
+        fields = '__all__'

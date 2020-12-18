@@ -65,4 +65,14 @@ const createComment = (postID, commentObject) => {
   })
 }
 
-export default { login, getLoggedInUser, signupUser, fetchPosts, createPost, fetchPostsByID, fetchComments, createComment }
+const createAddress = (addressObject) => {
+  return fetch('http://127.0.0.1:8000/api/user_address/', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify(addressObject)
+  })
+}
+
+export default { login, getLoggedInUser, signupUser, fetchPosts, createPost, fetchPostsByID, fetchComments, createComment, createAddress }

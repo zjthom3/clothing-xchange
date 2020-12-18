@@ -71,18 +71,20 @@ REST_FRAMEWORK = {
     ),
 }
 
-WSGI_APPLICATION = 'backend.wsgi.application'
-
-CORS_ORIGIN_WHITELIST = (
-    'https://localhost:3000', 'http://localhost:3000'
-)
-
 REST_FRAMEWORK_EXTENSIONS = {
     'DEFAULT_OBJECT_CACHE_KEY_FUNC':
       'rest_framework_extensions.utils.default_object_cache_key_func',
     'DEFAULT_LIST_CACHE_KEY_FUNC':
       'rest_framework_extensions.utils.default_list_cache_key_func',
 }
+
+
+WSGI_APPLICATION = 'backend.wsgi.application'
+
+CORS_ORIGIN_WHITELIST = (
+    'https://localhost:3000', 'http://localhost:3000'
+)
+
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases

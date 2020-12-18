@@ -67,8 +67,7 @@ class PostPage extends Component {
   render() {
     
     // CONSOLE LOG HERE!!!!!!!!!!!
-    console.log(this.state.comments[5])
-    console.log(this.state.user.username)
+    // console.log(this.state.user)
 
     const { redirect } = this.state
     if (redirect) {

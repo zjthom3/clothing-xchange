@@ -7,20 +7,26 @@ import PostList from '../components/PostList/PostList'
 class HomePage extends Component {
 
   state = {
-    posts: []
+    posts: [],
+    userAddress: {}
   }
 
   componentDidMount(){
     UserAPI.fetchPosts()
       .then((apiResponseJSON) => this.setState({
-          posts: apiResponseJSON
+        posts: apiResponseJSON
       }))
+
+    UserAPI.fetchUserAddresses()
+      .then((apiResponseJSON) => this.setState({
+        userAddress: apiResponseJSON
+    }))
   }
   
-  render() {
+  render() { 
 
     // CONSOLE LOG HERE!!!!!!!
-    console.log(this.props.user)
+    // console.log(this.state)
 
     return (
       <div>
@@ -35,7 +41,8 @@ class HomePage extends Component {
             <Link to='/new_post'>Create Post</Link>
             <br></br>
             <br></br>
-            <PostList user={this.props.user} posts={this.state.posts}/>
+            {/* POST LIST COMPONENT HERE */}
+            <PostList userAddress={this.state.userAddress} user={this.props.user} posts={this.state.posts}/>
           </div>
           :
           <div>

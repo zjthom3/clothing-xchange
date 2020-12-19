@@ -27,7 +27,7 @@ const AppNav = (props) => {
     window.location.reload()
   }
 
-  console.log(isLoggedIn)
+  // console.log(isLoggedIn)
   return (
     
     <Navbar color="dark" dark expand="md">

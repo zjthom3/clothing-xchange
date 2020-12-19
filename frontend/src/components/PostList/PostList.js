@@ -9,15 +9,32 @@ function PostList(props) {
   let counter = -1
 
   const CellFormatter = (cell, row) => {
+
     // ITS ALL ONE BIG LOOP (T.T)
     let id = {}
-   
+
+    let city = {}
+    let postUserID = {}
+
     for(let i=0; i < props.posts.length; i++) {
       id[i] = props.posts[i].id
+      postUserID[i] = props.posts[i].user
+      for (let j=0; j < props.userAddress.length; j++) {
+        if (props.userAddress[j].user == postUserID[i]) {
+            console.log(props.posts[i].title, props.userAddress[j].city)
+            city[i] = props.userAddress[j].city
+        }
+          
+        // city[props.userAddress[j].user] = props.userAddress[j].city
+      }
     }
+
+    console.log(city)
+    // console.log(postUserID)
+
     counter += 1
     // PUT IN ADDRESS
-    return (<div><Link to={`/post/${id[counter]}`}>{cell}</Link> (address goes here)</div>);
+    return (<div><Link to={`/post/${id[counter]}`}>{cell}</Link> <i>({ city[counter] })</i> </div>);
   }
   
   const dateFormat = (value, row, index) => {

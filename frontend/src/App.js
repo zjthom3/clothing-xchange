@@ -14,8 +14,8 @@ import AddressPage from './pages/AddressPage';
 
 function App() {
 
-  const [user, setUser] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     getUser()
@@ -31,6 +31,7 @@ function App() {
       }
     }
   }
+
 
   const handleLogin = async (evt) => {
     evt.preventDefault()
@@ -69,7 +70,6 @@ function App() {
   }
 
   const renderHomePage = () => {
-    console.log(isLoggedIn)
     return (
       <HomePage
       handleLogout={handleLogout}
@@ -94,7 +94,7 @@ function App() {
       />
     )
   }
-
+  // console.log(user)
   return (
     <div className='App'>
       <BrowserRouter>

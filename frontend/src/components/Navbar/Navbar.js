@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { Navbar, NavItem, NavbarBrand, Nav, NavLink } from 'reactstrap';
 import UserAPI from '../../api/UserAPI'
 

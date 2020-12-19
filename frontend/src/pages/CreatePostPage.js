@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import { Form, Button } from 'react-bootstrap'
 import UserAPI from '../api/UserAPI.js'
 import { Redirect } from 'react-router'
+import { TextField } from '@material-ui/core'
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+
 
 class CreatePostPage extends Component {
 
@@ -13,9 +16,9 @@ class CreatePostPage extends Component {
     event.preventDefault()
     const postObject = {
       title: event.target.title.value,
-      image: event.target.image.value ? event.target.image.value : null,
+      // image: event.target.image.value ? event.target.image.value : null,
       post_content: event.target.post_content.value,
-      datetime: event.target.date.value,
+      // datetime: event.target.date.value,
       user: this.props.user.id
     }
     UserAPI.createPost(postObject)
@@ -23,6 +26,7 @@ class CreatePostPage extends Component {
   }
 
   render() {
+
 
     const { redirect } = this.state
     if (redirect) {
@@ -33,16 +37,32 @@ class CreatePostPage extends Component {
       <div>
         <h1>Create New Post</h1>
         <form onSubmit={this.handleSubmit}>
-          <label>Title:</label>
-          <input type='text' placeholder='' name='title'></input>
-          <label>Image:</label>
-          <input type='file' placeholder='' name='image'></input>
-          <label>Content:</label>
-          <input type='textarea' placeholder='' name='post_content'></input>
-          <label>Date:</label>
-          <input type='datetime-local' placeholder='' name='date'></input>
-        
-          <button type='submit'>Submit</button>
+          <div>
+            <TextField 
+            required 
+            id="standard-required" 
+            label="Title" 
+            type='text' 
+            placeholder="Title" 
+            name='title'
+            />
+          </div>
+          <br></br>
+          <div>
+            <TextField
+            id="outlined-multiline-static"
+            label="Post Content"
+            multiline
+            rows={10}
+            placeholder="Default Value"
+            variant="outlined"
+            name="post_content"
+            />
+          </div>
+          <br></br>
+          <div>
+            <Button variant='contained' color='primary' type='submit'>Submit</Button>
+          </div>
         </form>
       </div>
     )

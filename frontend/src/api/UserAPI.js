@@ -79,4 +79,6 @@ const fetchUserAddresses = () => {
   return fetch(`http://127.0.0.1:8000/api/user_address/`).then((response) => response.json())
 }
 
+
+
 export default { login, getLoggedInUser, signupUser, fetchPosts, createPost, fetchPostsByID, fetchComments, createComment, createAddress, fetchUserAddresses }

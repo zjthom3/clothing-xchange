@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import UserAPI from '../../api/UserAPI'
+import Button from '@material-ui/core/Button';
+import { TextField } from '@material-ui/core';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+
 
 class CreateComment extends Component {
 
@@ -23,11 +27,20 @@ class CreateComment extends Component {
 
     return(
       <div>
-        <h3>Comment On Post</h3>
+        
         <form onSubmit={this.handleSubmit}>
-          <label>Comment: </label>
-          <input type='textarea' placeholder='' name='comment_content'></input>
-          <button type='submit'>Submit</button>
+          <div>
+            <TextField  
+            id="standard-required" 
+            label="Comment" 
+            type='textarea' 
+            placeholder="" 
+            name='comment_content'
+            variant='outlined'
+            size='small'
+            />
+            <Button size='large' variant='contained' color="primary" type='submit'><ArrowUpwardIcon></ArrowUpwardIcon></Button>
+          </div>
         </form>
       </div>
     )

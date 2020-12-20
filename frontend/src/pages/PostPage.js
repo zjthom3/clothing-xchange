@@ -64,7 +64,7 @@ class PostPage extends Component {
   render() {
     
     // CONSOLE LOG HERE!!!!!!!!!!!
-    // console.log(this.state.post)
+    // console.log(this.props)
 
     const { title, post_content, image, date_posted, user } = this.state.post
     const { redirect } = this.state

@@ -26,7 +26,7 @@ class HomePage extends Component {
   render() { 
 
     // CONSOLE LOG HERE!!!!!!!
-    // console.log(this.state)
+    // console.log(this.props)
 
     return (
       <div>
@@ -35,10 +35,12 @@ class HomePage extends Component {
           this.props.user 
           ?
           <div>
-            <h3>Welcome {this.props.user.first_name}</h3>
+            <h3>Welcome {this.props.user.first_name}!</h3>
             <Link to='/user_address'>Create Address</Link>
             <br></br>
             <Link to='/new_post'>Create Post</Link>
+            <br></br>
+            <Link to='/my_posts'>My Posts</Link>
             <br></br>
             <br></br>
             {/* POST LIST COMPONENT HERE */}

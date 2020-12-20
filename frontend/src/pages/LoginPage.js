@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom'
+import { TextField } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+
 
 const LoginPage = (props) => {
 
@@ -13,11 +16,29 @@ const LoginPage = (props) => {
     <div>
       <h1>Login Page</h1>
       <form onSubmit={props.handleLogin}>
-        <label>UserName:</label>
-        <input type='text' placeholder='username' name='username'></input>
-        <label>Password:</label>
-        <input type='password' placeholder='password' name='password'></input>
-        <button type='submit'>Submit</button>
+        <div>
+            <TextField 
+            required 
+            id="standard-required" 
+            label="User Name" 
+            type='text' 
+            placeholder="username" 
+            name='username'
+            variant='outlined'
+            />
+        
+            <TextField 
+            required 
+            id="standard-required" 
+            label="Password" 
+            type='password' 
+            placeholder="password" 
+            name='password'
+            variant='outlined'
+            />
+          </div>
+          <br></br>
+        <Button variant='contained' color='primary' type='submit'>Submit</Button>
       </form>
     </div>
   )

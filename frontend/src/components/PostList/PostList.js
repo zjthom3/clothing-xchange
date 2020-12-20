@@ -21,26 +21,19 @@ function PostList(props) {
       postUserID[i] = props.posts[i].user
       for (let j=0; j < props.userAddress.length; j++) {
         if (props.userAddress[j].user == postUserID[i]) {
-            console.log(props.posts[i].title, props.userAddress[j].city)
             city[i] = props.userAddress[j].city
         }
-          
-        // city[props.userAddress[j].user] = props.userAddress[j].city
       }
     }
 
-    console.log(city)
-    // console.log(postUserID)
-
     counter += 1
-    // PUT IN ADDRESS
-    return (<div><Link to={`/post/${id[counter]}`}>{cell}</Link> <i>({ city[counter] })</i> </div>);
+    // PUT IN ADDRESS {city[counter]}
+    return (<div><Link to={`/post/${id[counter]}`}>{cell}</Link> </div>);
   }
   
   const dateFormat = (value, row, index) => {
     return moment(value).startOf('day').fromNow()
   }
-  // console.log(props.posts)
 
   return (
     <div>

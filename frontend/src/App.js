@@ -10,6 +10,7 @@ import PostPage from './pages/PostPage';
 import AppNav from './components/Navbar/Navbar';
 import 'bootstrap/dist/css/bootstrap.css';
 import AddressPage from './pages/AddressPage';
+import MyPostPage from './pages/MyPostPage';
 
 
 function App() {
@@ -94,7 +95,15 @@ function App() {
       />
     )
   }
-  // console.log(user)
+
+  const renderMyPostPage = () => {
+    return (
+      <MyPostPage
+      user={user}
+      />
+    )
+  }
+  
   return (
     <div className='App'>
       <BrowserRouter>
@@ -105,6 +114,7 @@ function App() {
         <Route exact path='/new_post' render={renderCreatePostPage}/>
         <Route exact path='/post/:postID' component={PostPage}/>
         <Route exact path='/user_address' render={renderAddressPage}/>
+        <Route exact path='/my_posts' render={renderMyPostPage}/>
       </BrowserRouter>
     </div>
   );

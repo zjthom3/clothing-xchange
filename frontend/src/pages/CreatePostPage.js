@@ -45,6 +45,7 @@ class CreatePostPage extends Component {
             type='text' 
             placeholder="Title" 
             name='title'
+            variant='outlined'
             />
           </div>
           <br></br>

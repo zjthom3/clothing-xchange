@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
 
 
 
@@ -66,7 +67,7 @@ class PostPage extends Component {
     // CONSOLE LOG HERE!!!!!!!!!!!
     // console.log(this.props)
 
-    const { title, post_content, image, date_posted, user } = this.state.post
+    const { title, post_content, date_posted, user } = this.state.post
     const { redirect } = this.state
 
     if (redirect) {
@@ -94,7 +95,7 @@ class PostPage extends Component {
             <Paper className={useStyles.paper}> <p><i>Posted on {moment(date_posted).format('MMMM Do YYYY')}</i></p>
       
               <h3>{title} ({this.state.userAddress.map((value, index) => {
-                if (value.user == user) {
+                if (value.user === user) {
                   return value.city
                   }
                 })
@@ -106,14 +107,14 @@ class PostPage extends Component {
           
           {/* POST CONTENT */}
           <Grid item xs={12} sm={4}>
-            <Paper className={useStyles.paper}>
+            {/* <Paper className={useStyles.paper}> */}
             <h3>{post_content}</h3>
-            </Paper>
+            {/* </Paper> */}
           </Grid>
           {/* COMMENTS */}
           <Grid item xs={12} sm={4}>
             {/* loops thru comments */}
-            <Paper className={useStyles.paper}>
+            <Paper className={useStyles.paper} style={{maxHeight: 400, overflow: 'auto'}}>
             {this.state.comments.map((value, index) => {
               
               return <p key={index}>
@@ -127,28 +128,30 @@ class PostPage extends Component {
                       }
                       </p>
             })}
-            <CreateComment username={this.state.user.username} postID={this.props.match.params.postID}/>
+            {/* <CreateComment username={this.state.user.username} postID={this.props.match.params.postID}/> */}
             </Paper>
           </Grid>
           {/* GOOGLE MAP */}
-          <Grid item xs={12} sm={4}>
-            {/* <Paper className={useStyles.paper}> */}
+          <Grid item xs={12} sm={4}>        
             <iframe
               width={400}
               height={400}
               frameborder={0} style={{border:0}}
               src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAYSBV_aPK7t_266BK4D7Vf4LUUbdyk2t8&q=${this.state.userAddress.map((value, index) => {
-                if (value.user == user) {
+                if (value.user === user) {
                   return `${value.city}, ${value.state_prov}`
                     }
                   })
               }`} allowfullscreen>
             </iframe>
-            {/* </Paper> */}
+          </Grid>    
           </Grid>
-        
-        
-      
+          <Grid container justify='center' >
+            <Paper>
+            <CreateComment username={this.state.user.username} postID={this.props.match.params.postID}/>
+            </Paper>
+          </Grid>
+          <br/>
           {/* DELETE BUTTON FOR POST */}
           <Grid container justify='center'>
           {
@@ -161,7 +164,6 @@ class PostPage extends Component {
             </div>
           }
           </Grid>
-        </Grid>
       </div>
     )
   }

@@ -33,7 +33,6 @@ function App() {
     }
   }
 
-
   const handleLogin = async (evt) => {
     evt.preventDefault()
     let userCredentials = {
@@ -58,7 +57,6 @@ function App() {
     setUser(null)
   }
 
-  // takes render on line 64 because of the component
   const renderLoginPage = () => {
     return (
       <LoginPage

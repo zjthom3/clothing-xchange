@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import UserAPI from '../api/UserAPI.js';
 import PostList from '../components/PostList/PostList'
+import Box from '@material-ui/core/Box';
 
 
 class HomePage extends Component {
@@ -48,7 +49,17 @@ class HomePage extends Component {
           </div>
           :
           <div>
-          Sign Up For Free And Trade Clothes With Our Users!
+            <Box
+            color="black"
+            p={2}
+            position="absolute"
+            top={350}
+            left="25%"
+            zIndex="tooltip"
+            >
+            <h3>Sign Up For Free And Trade Clothes With Our Users!</h3>
+            </Box>
+    
           </div>
             
         }
